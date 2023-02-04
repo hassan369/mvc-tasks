@@ -1,0 +1,77 @@
+﻿@model WebApplication1.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="ProductName">ProductName</label>
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })*@
+            <input class="form-control text-box single-line" id="ProductName" name="ProductName" type="text" value="">
+
+            @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.CategoryID, "CategoryID", htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="CategoryID">CategoryID</label>
+        <div class="col-md-10">
+            @*@Html.DropDownList("CategoryID", null, htmlAttributes: new { @class = "form-control" })*@
+            <select class="form-control valid" id="CategoryID" name="CategoryID" aria-invalid="false">
+                <option value="1">fruits</option>
+                <option value="2">sales</option>
+            </select>
+            @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="UnitPrice">UnitPrice</label>
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })*@
+            <input class="form-control text-box single-line" data-val="true" data-val-number="The field UnitPrice must be a number." id="UnitPrice" name="UnitPrice" type="number" value="">
+            @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @*@Html.LabelFor(model => model.UnitsInStock, htmlAttributes: new { @class = "control-label col-md-2" })*@
+        <label class="control-label col-md-2" for="UnitsInStock">UnitsInStock</label>
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.UnitsInStock, new { htmlAttributes = new { @class = "form-control" } })*@
+            <input class="form-control text-box single-line" data-val="true" data-val-number="The field UnitsInStock must be a number." id="UnitsInStock" name="UnitsInStock" type="number" value="">
+            @Html.ValidationMessageFor(model => model.UnitsInStock, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @*@Html.ActionLink("Back to List", "Index")*@
+    <a href="/Products">Back to List</a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
