@@ -30,6 +30,8 @@
     <Property Name="Age" Type="int" />
     <Property Name="Job_title" Type="varchar" MaxLength="10" />
     <Property Name="Gender" Type="bit" />
+    <Property Name="image" Type="varchar" MaxLength="1000" />
+    <Property Name="cv" Type="varchar" MaxLength="500" />
   </EntityType>
   <Association Name="FK__Products__Catego__398D8EEE">
     <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />

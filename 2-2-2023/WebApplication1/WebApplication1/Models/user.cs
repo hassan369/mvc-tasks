@@ -11,31 +11,18 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class user
     {
         public int id { get; set; }
-        [Required]
-        [StringLength(12)]
-        [Display(Name = "First Name")]
         public string First_Name { get; set; }
-        [Required]
-        [StringLength(12)]
-        [Display(Name = "Last Name")]
         public string Last_name { get; set; }
-        [EmailAddress]
-        [Required]
         public string E_mail { get; set; }
-        [RegularExpression(@"^(0)?(77|78|79)\d{7}$")]
         public Nullable<int> Phone { get; set; }
-        [Range(18,85)]
         public Nullable<int> Age { get; set; }
-        [StringLength(10)]
         public string Job_title { get; set; }
-        [DisplayFormat(NullDisplayText = "", ConvertEmptyStringToNull = true, DataFormatString = "{0:Male;Female}")]
-
-
         public Nullable<bool> Gender { get; set; }
+        public string image { get; set; }
+        public string cv { get; set; }
     }
 }

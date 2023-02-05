@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -15,9 +17,25 @@ namespace WebApplication1.Controllers
         private Entities db = new Entities();
 
         // GET: users
-        public ActionResult Index()
+        public ActionResult Index(string q, string SelectedOption)
         {
-            return View(db.users.ToList());
+            var data = db.users.ToList();
+            if (SelectedOption == "Fname")
+            {
+                 data = db.users.Where(x => x.First_Name.Contains(q) || q == null).ToList();
+
+            }
+            else if (SelectedOption == "Email")
+            {
+                data = db.users.Where(x => x.E_mail.Contains(q) || q == null).ToList();
+
+            }
+            else if (SelectedOption == "Lname")
+            {
+                data = db.users.Where(x => x.Last_name.Contains(q) || q == null).ToList();
+
+            }
+            return View(data);
         }
 
         // GET: users/Details/5
@@ -46,10 +64,60 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,First_Name,Last_name,E_mail,Phone,Age,Job_title,Gender")] user user)
+        public ActionResult Create([Bind(Include = "id,First_Name,Last_name,E_mail,Phone,Age,Job_title,Gender,image")] user user, HttpPostedFileBase image2, HttpPostedFileBase cv)
         {
             if (ModelState.IsValid)
             {
+                if (image2 != null)
+                {
+                    if (!image2.ContentType.ToLower().StartsWith("image/"))
+                    {
+                        ModelState.AddModelError("", "file uploaded is not an image");
+                        return View(user);
+                    }
+                    string folderPath = Server.MapPath("~/Content/Images");
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+                    string fileName = Path.GetFileName(image2.FileName);
+                    string path = Path.Combine(folderPath, fileName);
+                    image2.SaveAs(path);
+                    user.image = "../Content/Images/" + fileName;
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Please upload an image.");
+                    return View(user);
+                }
+
+                if (cv != null)
+                {
+                    //if (!image2.ContentType.ToLower().StartsWith("image/"))
+                    //{
+                    //    ModelState.AddModelError("", "file uploaded is not an image");
+                    //    return View(user);
+                    //}
+                    string folderPath = Server.MapPath("~/Content/CVs");
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+                    string fileName = Path.GetFileName(cv.FileName);
+                    string path = Path.Combine(folderPath, fileName);
+                    cv.SaveAs(path);
+                    user.cv = "../Content/CVs/" + fileName;
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Please upload an cv.");
+                    return View(user);
+                }
+
+
+
+
+
                 db.users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,10 +146,56 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,First_Name,Last_name,E_mail,Phone,Age,Job_title,Gender")] user user)
+        public ActionResult Edit([Bind(Include = "id,First_Name,Last_name,E_mail,Phone,Age,Job_title,Gender")] user user, HttpPostedFileBase image2, HttpPostedFileBase cv)
         {
             if (ModelState.IsValid)
             {
+                if (image2 != null)
+                {
+                    if (!image2.ContentType.ToLower().StartsWith("image/"))
+                    {
+                        ModelState.AddModelError("", "file uploaded is not an image");
+                        return View(user);
+                    }
+                    string folderPath = Server.MapPath("~/Content/Images");
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+                    string fileName = Path.GetFileName(image2.FileName);
+                    string path = Path.Combine(folderPath, fileName);
+                    image2.SaveAs(path);
+                    user.image = "../Content/Images/" + fileName;
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Please upload an image.");
+                    return View(user);
+                }
+                if (cv != null)
+                {
+                    //if (!image2.ContentType.ToLower().StartsWith("image/"))
+                    //{
+                    //    ModelState.AddModelError("", "file uploaded is not an image");
+                    //    return View(user);
+                    //}
+                    string folderPath = Server.MapPath("~/Content/CVs");
+                    if (!Directory.Exists(folderPath))
+                    {
+                        Directory.CreateDirectory(folderPath);
+                    }
+                    string fileName = Path.GetFileName(cv.FileName);
+                    string path = Path.Combine(folderPath, fileName);
+                    cv.SaveAs(path);
+                    user.cv = "../Content/CVs/" + fileName;
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Please upload an cv.");
+                    return View(user);
+                }
+
+
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

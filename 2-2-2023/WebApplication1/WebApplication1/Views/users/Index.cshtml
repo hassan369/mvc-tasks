@@ -9,6 +9,24 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@*<form action="/Search" method="get">
+        <input type="text" name="q" placeholder="Search..." />
+        <input type="submit" value="Go" />
+    </form>*@
+
+@using (Html.BeginForm("Index", "users", FormMethod.Get))
+{
+    @Html.RadioButton("SelectedOption", "Fname", new { id = "Fname" })
+    <label for="Fname">First Name</label>
+    @Html.RadioButton("SelectedOption", "Email", new { id = "Email" })
+    <label for="Email">Email</label>
+    @Html.RadioButton("SelectedOption", "Lname", new { id = "Lname" })
+    <label for="Lname">Last Name</label>
+    @Html.TextBox("q", null, new { placeholder = "Search..." })
+    <input type="submit" value="Go" />
+}
+
 <table class="table">
     <tr>
         <th>
@@ -30,40 +48,53 @@
             @Html.DisplayNameFor(model => model.Job_title)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cv)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Gender)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.First_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Last_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.E_mail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Job_title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.First_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.E_mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job_title)
+            </td>
+            <td>
+                <img src="@item.image" style="width:100px; height:100px" />
+            </td>
+            <td>
+                <a href="@item.cv" download target="_blank">CV</a>
+</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
 
 </table>

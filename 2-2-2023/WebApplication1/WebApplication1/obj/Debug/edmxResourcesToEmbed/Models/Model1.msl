@@ -24,6 +24,8 @@
     <EntitySetMapping Name="users">
       <EntityTypeMapping TypeName="Model.user">
         <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="cv" ColumnName="cv" />
+          <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="Gender" ColumnName="Gender" />
           <ScalarProperty Name="Job_title" ColumnName="Job_title" />
           <ScalarProperty Name="Age" ColumnName="Age" />

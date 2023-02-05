@@ -53,5 +53,7 @@
     <Property Name="Age" Type="Int32" />
     <Property Name="Job_title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Gender" Type="Boolean" />
+    <Property Name="image" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="cv" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

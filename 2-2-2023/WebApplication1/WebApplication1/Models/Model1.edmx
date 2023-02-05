@@ -35,6 +35,8 @@
           <Property Name="Age" Type="int" />
           <Property Name="Job_title" Type="varchar" MaxLength="10" />
           <Property Name="Gender" Type="bit" />
+          <Property Name="image" Type="varchar" MaxLength="1000" />
+          <Property Name="cv" Type="varchar" MaxLength="500" />
         </EntityType>
         <Association Name="FK__Products__Catego__398D8EEE">
           <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
@@ -114,6 +116,8 @@
           <Property Name="Age" Type="Int32" />
           <Property Name="Job_title" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Gender" Type="Boolean" />
+          <Property Name="image" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="cv" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -144,6 +148,8 @@
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="Model.user">
               <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="cv" ColumnName="cv" />
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Job_title" ColumnName="Job_title" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
