@@ -40,6 +40,11 @@
       <End Role="Products" EntitySet="Products" />
     </AssociationSet>
     <EntitySet Name="users" EntityType="Model.user" />
+    <EntitySet Name="Orders" EntityType="Model.Order" />
+    <AssociationSet Name="FK__Orders__Customer__49C3F6B7" Association="Model.FK__Orders__Customer__49C3F6B7">
+      <End Role="user" EntitySet="users" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="user">
     <Key>
@@ -55,5 +60,27 @@
     <Property Name="Gender" Type="Boolean" />
     <Property Name="image" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
     <Property Name="cv" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Orders" Relationship="Model.FK__Orders__Customer__49C3F6B7" FromRole="user" ToRole="Order" />
   </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerId" Type="Int32" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="user" Relationship="Model.FK__Orders__Customer__49C3F6B7" FromRole="Order" ToRole="user" />
+  </EntityType>
+  <Association Name="FK__Orders__Customer__49C3F6B7">
+    <End Type="Model.user" Role="user" Multiplicity="0..1" />
+    <End Type="Model.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -1,0 +1,17 @@
+﻿@*@model Tuple<WebApplication1.Models.user, WebApplication1.Models.Product>*@
+@model Tuple<List<WebApplication1.Models.user>, List<WebApplication1.Models.Product>>
+@{
+    ViewBag.Title = "Viewhaspartials";
+}
+
+<h2>Viewhaspartials</h2>
+
+<div>
+    @Html.Partial("../_user2", Model.Item1)
+</div>
+
+<h3>now the second partioal</h3>
+
+<div>
+    @Html.Partial("../products",Model.Item2)
+</div>

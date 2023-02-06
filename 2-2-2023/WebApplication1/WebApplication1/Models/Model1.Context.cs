@@ -28,5 +28,6 @@ namespace WebApplication1.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
     }
 }

@@ -9,6 +9,8 @@
         <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="Model.FK__Products__Catego__398D8EEE" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Model.user" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="3" PointY="5.375" />
+        <AssociationConnector Association="Model.FK__Orders__Customer__49C3F6B7" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

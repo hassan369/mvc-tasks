@@ -14,6 +14,12 @@ namespace WebApplication1.Models
     
     public partial class user
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public user()
+        {
+            this.Orders = new HashSet<Order>();
+        }
+    
         public int id { get; set; }
         public string First_Name { get; set; }
         public string Last_name { get; set; }
@@ -24,5 +30,8 @@ namespace WebApplication1.Models
         public Nullable<bool> Gender { get; set; }
         public string image { get; set; }
         public string cv { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

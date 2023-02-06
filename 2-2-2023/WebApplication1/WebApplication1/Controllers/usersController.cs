@@ -38,6 +38,13 @@ namespace WebApplication1.Controllers
             return View(data);
         }
 
+        public ActionResult Viewhaspartials()
+        {
+            var users = db.users.ToList();
+            var products = db.Products.ToList();
+            return View(Tuple.Create(users,products));
+        }
+
         // GET: users/Details/5
         public ActionResult Details(int? id)
         {
