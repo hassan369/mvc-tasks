@@ -132,6 +132,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Controllers\usersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -160,12 +161,49 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\template.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\user.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\flex-slider.css" />
+    <Content Include="assets\css\fontawesome.css" />
+    <Content Include="assets\css\owl.css" />
+    <Content Include="assets\css\tooplate-main.css" />
+    <Content Include="assets\fonts\flexslider-icon.svg" />
+    <Content Include="assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="assets\fonts\slick.svg" />
+    <Content Include="assets\images\about-us.jpg" />
+    <Content Include="assets\images\banner-bg.jpg" />
+    <Content Include="assets\images\big-01.jpg" />
+    <Content Include="assets\images\big-02.jpg" />
+    <Content Include="assets\images\big-03.jpg" />
+    <Content Include="assets\images\big-04.jpg" />
+    <Content Include="assets\images\header-logo.png" />
+    <Content Include="assets\images\item-01.jpg" />
+    <Content Include="assets\images\item-02.jpg" />
+    <Content Include="assets\images\item-03.jpg" />
+    <Content Include="assets\images\item-04.jpg" />
+    <Content Include="assets\images\item-05.jpg" />
+    <Content Include="assets\images\item-06.jpg" />
+    <Content Include="assets\images\product-01.jpg" />
+    <Content Include="assets\images\product-02.jpg" />
+    <Content Include="assets\images\product-03.jpg" />
+    <Content Include="assets\images\product-04.jpg" />
+    <Content Include="assets\images\product-05.jpg" />
+    <Content Include="assets\images\product-06.jpg" />
+    <Content Include="assets\images\thumb-01.jpg" />
+    <Content Include="assets\images\thumb-02.jpg" />
+    <Content Include="assets\images\thumb-03.jpg" />
+    <Content Include="assets\images\thumb-04.jpg" />
+    <Content Include="assets\js\custom.js" />
+    <Content Include="assets\js\flex-slider.js" />
+    <Content Include="assets\js\isotope.js" />
+    <Content Include="assets\js\owl.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -194,6 +232,18 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="assets\fonts\Flaticon.woff" />
+    <Content Include="assets\fonts\flexslider-icon.eot" />
+    <Content Include="assets\fonts\flexslider-icon.ttf" />
+    <Content Include="assets\fonts\flexslider-icon.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\fonts\FontAwesome.otf" />
+    <Content Include="assets\fonts\slick.eot" />
+    <Content Include="assets\fonts\slick.ttf" />
+    <Content Include="assets\fonts\slick.woff" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -205,6 +255,16 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="vendor\jquery\jquery.js" />
+    <Content Include="vendor\jquery\jquery.min.js" />
+    <Content Include="vendor\jquery\jquery.slim.js" />
+    <Content Include="vendor\jquery\jquery.slim.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -239,6 +299,15 @@
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Shared\lastOrder.cshtml" />
+    <Content Include="Views\Template\Index.cshtml" />
+    <Content Include="vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="vendor\jquery\jquery.min.map" />
+    <Content Include="vendor\jquery\jquery.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

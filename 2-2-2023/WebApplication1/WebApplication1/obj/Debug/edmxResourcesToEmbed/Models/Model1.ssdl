@@ -26,6 +26,15 @@
     <Property Name="UnitPrice" Type="int" />
     <Property Name="UnitsInStock" Type="int" />
   </EntityType>
+  <EntityType Name="templates">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="price" Type="float" />
+    <Property Name="img" Type="varchar" MaxLength="1000" />
+  </EntityType>
   <EntityType Name="users">
     <Key>
       <PropertyRef Name="id" />
@@ -69,6 +78,7 @@
     <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="templates" EntityType="Self.templates" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Orders__Customer__49C3F6B7" Association="Self.FK__Orders__Customer__49C3F6B7">
       <End Role="users" EntitySet="users" />

@@ -7,11 +7,19 @@
 <h2>Viewhaspartials</h2>
 
 <div>
-    @Html.Partial("../_user2", Model.Item1)
+    @*@Html.Partial("../_user2", Model.Item1)*@
+    @foreach (var item in Model.Item1)
+    {
+        <p>@item.First_Name</p>
+    }
 </div>
 
 <h3>now the second partioal</h3>
 
 <div>
-    @Html.Partial("../products",Model.Item2)
+    @*@Html.Partial("../products",Model.Item2)*@
+    @foreach (var item2 in Model.Item2)
+    {
+
+    }
 </div>

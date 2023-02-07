@@ -11,6 +11,7 @@
         <EntityTypeShape EntityType="Model.user" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="3" PointY="5.375" />
         <AssociationConnector Association="Model.FK__Orders__Customer__49C3F6B7" />
+        <EntityTypeShape EntityType="Model.template" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

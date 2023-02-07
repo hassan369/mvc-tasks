@@ -31,6 +31,15 @@
           <Property Name="UnitPrice" Type="int" />
           <Property Name="UnitsInStock" Type="int" />
         </EntityType>
+        <EntityType Name="templates">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="float" />
+          <Property Name="img" Type="varchar" MaxLength="1000" />
+        </EntityType>
         <EntityType Name="users">
           <Key>
             <PropertyRef Name="id" />
@@ -74,6 +83,7 @@
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="templates" EntityType="Self.templates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Orders__Customer__49C3F6B7" Association="Self.FK__Orders__Customer__49C3F6B7">
             <End Role="users" EntitySet="users" />
@@ -133,6 +143,7 @@
             <End Role="user" EntitySet="users" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
+          <EntitySet Name="templates" EntityType="Model.template" />
         </EntityContainer>
         <EntityType Name="user">
           <Key>
@@ -171,6 +182,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="template">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Double" />
+          <Property Name="img" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -219,6 +239,16 @@
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="templates">
+            <EntityTypeMapping TypeName="Model.template">
+              <MappingFragment StoreEntitySet="templates">
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
