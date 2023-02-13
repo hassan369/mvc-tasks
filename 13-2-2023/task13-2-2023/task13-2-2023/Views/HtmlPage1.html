@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <script>
+        async function getData() {
+            const response = await fetch("api/Faculties1");
+            console.log(response);
+            const data = await response.json();
+            console.log(data);
+
+
+            //for (let i = 0; i < data.length; i++) {
+            //    //  document.getElementById("name").innerHTML=data[i].name;
+            //    //    document.getElementById("img").src=data[i].img;
+
+            //    document.write("<h1>" + data[i].name + "</h1>");
+
+            //    document.write(<img src="${data[i].img}" />);
+
+            //}
+
+        }
+        getData();
+    </script>
+</body>
+</html>

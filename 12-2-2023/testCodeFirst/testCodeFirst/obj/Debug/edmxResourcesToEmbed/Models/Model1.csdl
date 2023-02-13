@@ -7,6 +7,7 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Students" Relationship="Self.FK__Students__Cource__398D8EEE" FromRole="Courses" ToRole="Students" />
+    <NavigationProperty Name="Cources_for_student" Relationship="Model.FK__Cources_f__Courc__3D5E1FD2" FromRole="Cours" ToRole="Cources_for_student" />
   </EntityType>
   <EntityType Name="Student">
     <Key>
@@ -16,6 +17,7 @@
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Cource_id" Type="Int32" />
     <NavigationProperty Name="Cours" Relationship="Self.FK__Students__Cource__398D8EEE" FromRole="Students" ToRole="Courses" />
+    <NavigationProperty Name="Cources_for_student" Relationship="Model.FK__Cources_f__Stude__3E52440B" FromRole="Student" ToRole="Cources_for_student" />
   </EntityType>
   <Association Name="FK__Students__Cource__398D8EEE">
     <End Role="Courses" Type="Self.Cours" Multiplicity="0..1" />
@@ -36,5 +38,48 @@
       <End Role="Courses" EntitySet="Courses" />
       <End Role="Students" EntitySet="Students" />
     </AssociationSet>
+    <EntitySet Name="Cources_for_student" EntityType="Model.Cources_for_student" />
+    <AssociationSet Name="FK__Cources_f__Courc__3D5E1FD2" Association="Model.FK__Cources_f__Courc__3D5E1FD2">
+      <End Role="Cours" EntitySet="Courses" />
+      <End Role="Cources_for_student" EntitySet="Cources_for_student" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cources_f__Stude__3E52440B" Association="Model.FK__Cources_f__Stude__3E52440B">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Cources_for_student" EntitySet="Cources_for_student" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="Cources_for_student">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Student_id" Type="Int32" />
+    <Property Name="Cource_id" Type="Int32" />
+    <NavigationProperty Name="Cours" Relationship="Model.FK__Cources_f__Courc__3D5E1FD2" FromRole="Cources_for_student" ToRole="Cours" />
+    <NavigationProperty Name="Student" Relationship="Model.FK__Cources_f__Stude__3E52440B" FromRole="Cources_for_student" ToRole="Student" />
+  </EntityType>
+  <Association Name="FK__Cources_f__Courc__3D5E1FD2">
+    <End Type="Model.Cours" Role="Cours" Multiplicity="0..1" />
+    <End Type="Model.Cources_for_student" Role="Cources_for_student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cours">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cources_for_student">
+        <PropertyRef Name="Cource_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cources_f__Stude__3E52440B">
+    <End Type="Model.Student" Role="Student" Multiplicity="0..1" />
+    <End Type="Model.Cources_for_student" Role="Cources_for_student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cources_for_student">
+        <PropertyRef Name="Student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

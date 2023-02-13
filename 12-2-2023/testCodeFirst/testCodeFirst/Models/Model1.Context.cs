@@ -27,5 +27,6 @@ namespace testCodeFirst.Models
     
         public virtual DbSet<Cours> Courses { get; set; }
         public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Cources_for_student> Cources_for_student { get; set; }
     }
 }

@@ -8,6 +8,7 @@ namespace testCodeFirst.Controllers
 {
     public class HomeController : Controller
     {
+        [HandleError(ExceptionType = typeof(DivideByZeroException),View ="Error")]
         public ActionResult Index()
         {
             return View();

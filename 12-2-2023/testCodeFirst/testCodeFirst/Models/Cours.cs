@@ -18,6 +18,7 @@ namespace testCodeFirst.Models
         public Cours()
         {
             this.Students = new HashSet<Student>();
+            this.Cources_for_student = new HashSet<Cources_for_student>();
         }
     
         public int id { get; set; }
@@ -25,5 +26,7 @@ namespace testCodeFirst.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Students { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cources_for_student> Cources_for_student { get; set; }
     }
 }

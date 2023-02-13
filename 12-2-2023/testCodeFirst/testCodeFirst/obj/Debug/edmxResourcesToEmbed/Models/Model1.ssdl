@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cources_for_student">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Student_id" Type="int" />
+    <Property Name="Cource_id" Type="int" />
+  </EntityType>
   <EntityType Name="Courses">
     <Key>
       <PropertyRef Name="id" />
@@ -15,6 +23,30 @@
     <Property Name="name" Type="varchar" MaxLength="50" />
     <Property Name="Cource_id" Type="int" />
   </EntityType>
+  <Association Name="FK__Cources_f__Courc__3D5E1FD2">
+    <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+    <End Role="Cources_for_student" Type="Self.Cources_for_student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Courses">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cources_for_student">
+        <PropertyRef Name="Cource_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cources_f__Stude__3E52440B">
+    <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+    <End Role="Cources_for_student" Type="Self.Cources_for_student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Cources_for_student">
+        <PropertyRef Name="Student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Students__Cource__398D8EEE">
     <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
     <End Role="Students" Type="Self.Students" Multiplicity="*" />
@@ -28,8 +60,17 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Cources_for_student" EntityType="Self.Cources_for_student" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Cources_f__Courc__3D5E1FD2" Association="Self.FK__Cources_f__Courc__3D5E1FD2">
+      <End Role="Courses" EntitySet="Courses" />
+      <End Role="Cources_for_student" EntitySet="Cources_for_student" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cources_f__Stude__3E52440B" Association="Self.FK__Cources_f__Stude__3E52440B">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Cources_for_student" EntitySet="Cources_for_student" />
+    </AssociationSet>
     <AssociationSet Name="FK__Students__Cource__398D8EEE" Association="Self.FK__Students__Cource__398D8EEE">
       <End Role="Courses" EntitySet="Courses" />
       <End Role="Students" EntitySet="Students" />

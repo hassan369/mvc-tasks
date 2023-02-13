@@ -14,10 +14,18 @@ namespace testCodeFirst.Models
     
     public partial class Student
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Student()
+        {
+            this.Cources_for_student = new HashSet<Cources_for_student>();
+        }
+    
         public int id { get; set; }
         public string name { get; set; }
         public Nullable<int> Cource_id { get; set; }
     
         public virtual Cours Cours { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cources_for_student> Cources_for_student { get; set; }
     }
 }

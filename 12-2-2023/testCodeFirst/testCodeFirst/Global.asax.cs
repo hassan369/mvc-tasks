@@ -17,5 +17,10 @@ namespace testCodeFirst
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        //protected void Application_Error()
+        //{
+        //    var Error = Server.GetLastError();
+        //    Error
+        //}
     }
 }

@@ -18,5 +18,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Cources_for_student">
+      <EntityTypeMapping TypeName="Model.Cources_for_student">
+        <MappingFragment StoreEntitySet="Cources_for_student">
+          <ScalarProperty Name="Cource_id" ColumnName="Cource_id" />
+          <ScalarProperty Name="Student_id" ColumnName="Student_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
